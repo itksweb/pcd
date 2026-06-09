@@ -1,0 +1,328 @@
+/* ==========================================
+   1. GLOBAL STYLES & RESET
+   ========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+}
+
+body {
+  background-color: #ffffff;
+  line-height: 1.6;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 4px;
+  background-color: #4f46e5;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Custom Buttons (Instead of Bootstrap buttons, keeping core CSS skill alive) */
+.btn-custom {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  background-color: #4f46e5;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #4338ca;
+  color: #ffffff;
+}
+
+/* ==========================================
+   2. HEADER & NAVIGATION (Pure CSS/JS)
+   ========================================== */
+.site-header {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #4f46e5;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #4f46e5;
+}
+
+/* Mobile Toggle Hamburger Button */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.hamburger {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background: #1f2937;
+  transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: #1f2937;
+  transition:
+    transform 0.3s ease,
+    top 0.3s ease,
+    bottom 0.3s ease;
+}
+
+.hamburger::before {
+  top: -6px;
+}
+.hamburger::after {
+  bottom: -6px;
+}
+
+/* ==========================================
+   3. SECTION SPECIFIC COMPONENTS
+   ========================================== */
+
+/* Hero Section */
+.hero-section {
+  background-color: #f9fafb;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #4f46e5;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.hero-description {
+  color: #6b7280;
+}
+
+.hero-img {
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* About Section */
+.skills-box {
+  background-color: #f9fafb;
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #4f46e5;
+}
+
+.skills-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 500;
+  list-style: none;
+}
+
+.skills-list li::before {
+  content: "✓ ";
+  color: #4f46e5;
+  font-weight: bold;
+}
+
+/* Projects Section Component styling */
+.filter-btn {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-info p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+/* Custom layout logic for JavaScript filters */
+.project-card-wrapper.d-none {
+  display: none !important;
+}
+
+/* Contact Section Custom Form elements */
+.contact-wrapper {
+  max-width: 600px;
+  background-color: #f9fafb;
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control-custom {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.form-control-custom:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.form-feedback {
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-feedback.success-msg {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+/* Footer styling colors */
+.site-footer {
+  background-color: #1f2937;
+  color: #9ca3af;
+}
+
+/* ==========================================
+   4. RESPONSIVE BREAKPOINT CUSTOMIZATIONS
+   ========================================== */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-menu.open {
+    max-height: 300px;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  /* Animated states for custom mobile button icon toggles */
+  .nav-toggle.open .hamburger {
+    background: transparent;
+  }
+  .nav-toggle.open .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  .nav-toggle.open .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+}
