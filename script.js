@@ -6,8 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Changing Job Titles
 
   const roles = [
-    "Web Developer",
     "Frontend Developer",
+    "Web Developer",
+    "Digital Creator",
     "UI Designer",
     "Freelancer",
   ];
@@ -99,4 +100,4 @@ document.addEventListener("DOMContentLoaded", () => {
       formFeedback.classList.remove("success-msg");
     }, 5000);
   });
-};);
+});
