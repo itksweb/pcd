@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let index = 0;
 
-  const roleText = document.getElementById("changing-text");
+  const roleText = document.querySelector(".changing-text");
 
   setInterval(() => {
     index++;
