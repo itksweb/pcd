@@ -1,6 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
-  // 1. MOBILE MENU TOGGLE
+  // 1. CHANGING TEXT
+  // ==========================================
+
+  // Changing Job Titles
+
+  const roles = [
+    "Web Developer",
+    "Frontend Developer",
+    "UI Designer",
+    "Freelancer",
+  ];
+
+  let index = 0;
+
+  const roleText = document.getElementById("changing-text");
+
+  setInterval(() => {
+    index++;
+
+    if (index >= roles.length) {
+      index = 0;
+    }
+
+    roleText.textContent = roles[index];
+  }, 2000);
+
+  // ==========================================
+  // 2. MOBILE MENU TOGGLE
   // ==========================================
   const navToggle = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector(".nav-menu");
@@ -20,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==========================================
-  // 2. PROJECT FILTER UTILITY
+  // 3. PROJECT FILTER UTILITY
   // ==========================================
   const filterButtons = document.querySelectorAll(".filter-btn");
   const projectWrappers = document.querySelectorAll(".project-card-wrapper");
@@ -72,4 +99,4 @@ document.addEventListener("DOMContentLoaded", () => {
       formFeedback.classList.remove("success-msg");
     }, 5000);
   });
-});
+};);
