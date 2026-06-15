@@ -1,5 +1,5 @@
 /* ==========================================
-   1. GLOBAL STYLES & RESET
+   1. GLOBAL STYLES, RESET & UTILITIES
    ========================================== */
 * {
   margin: 0;
@@ -16,10 +16,50 @@ html {
 body {
   background-color: #ffffff;
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #1f2937;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+#heroo,
+#site-header {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+/* Structure and Spacing Utilities */
+section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .section-title {
-  text-align: center;
   font-size: 2.2rem;
   margin-bottom: 3rem;
   position: relative;
@@ -35,7 +75,7 @@ body {
   border-radius: 2px;
 }
 
-/* Custom Buttons (Instead of Bootstrap buttons, keeping core CSS skill alive) */
+/* Buttons */
 .btn-custom {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -47,6 +87,7 @@ body {
   transition: background-color 0.3s ease;
   cursor: pointer;
   border: none;
+  text-align: center;
 }
 
 .btn-custom:hover {
@@ -54,15 +95,27 @@ body {
   color: #ffffff;
 }
 
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
 /* ==========================================
-   2. HEADER & NAVIGATION (Pure CSS/JS)
+   2. HEADER & NAVIGATION
    ========================================== */
-.site-header {
+header {
   background-color: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid #e5e7eb;
   position: sticky;
   top: 0;
   z-index: 1000;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
@@ -133,17 +186,22 @@ body {
 }
 
 /* ==========================================
-   3. SECTION SPECIFIC COMPONENTS
+   3. SECTION SPECIFIC LAYOUTS & COMPONENTS
    ========================================== */
 
 /* Hero Section */
-.hero-section {
-  background-color: #f9fafb;
+#hero {
+  background-color: #eef4fa;
+}
+
+#hero img {
+  max-width: 45%;
 }
 
 .hero-content h1 {
   font-size: 3rem;
   line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 .highlight {
@@ -154,19 +212,38 @@ body {
   font-size: 1.3rem;
   color: #4b5563;
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .hero-description {
   color: #6b7280;
+  margin-bottom: 1.5rem;
 }
 
 .hero-img {
+  max-width: 100%;
+  height: auto;
   border-radius: 50%;
   border: 5px solid #ffffff;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 /* About Section */
+.about-content {
+  display: flex;
+  /* grid-template-columns: 7fr 5fr; */
+  gap: 3rem;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.about-text p {
+  margin-bottom: 1rem;
+}
+.about-skills {
+  min-width: 40%;
+}
+
 .skills-box {
   background-color: #f9fafb;
   padding: 2rem;
@@ -174,11 +251,14 @@ body {
   border-left: 4px solid #4f46e5;
 }
 
+.skills-list {
+  list-style: none;
+}
+
 .skills-list li {
   padding: 0.5rem 0;
   border-bottom: 1px solid #e5e7eb;
   font-weight: 500;
-  list-style: none;
 }
 
 .skills-list li::before {
@@ -187,7 +267,14 @@ body {
   font-weight: bold;
 }
 
-/* Projects Section Component styling */
+/* Projects Section */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .filter-btn {
   background-color: #f9fafb;
   border: 1px solid #e5e7eb;
@@ -204,11 +291,23 @@ body {
   border-color: #4f46e5;
 }
 
+.projects-grid {
+  display: flex; /*grid;*/
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
 .project-card {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   overflow: hidden;
+  height: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -219,8 +318,18 @@ body {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+.project-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .project-info {
   padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .project-info p {
@@ -232,26 +341,64 @@ body {
   text-decoration: none;
   color: #4f46e5;
   font-weight: 600;
+  margin-top: auto;
+}
+.downloads {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  .download {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px;
+    background-color: #f0f2f9;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    h4{
+        flex: 1;
+    }
+    a {
+      padding: 10px;
+      text-align: center;
+      border-radius: 20px;
+      background-color: #4f46e5;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 3px 5px -3px rgba(0, 0, 0, 0.1);
+    }
+  }
 }
 
-/* Custom layout logic for JavaScript filters */
-.project-card-wrapper.d-none {
-  display: none !important;
-}
+/* Contact Section */
 
-/* Contact Section Custom Form elements */
-.contact-wrapper {
-  max-width: 600px;
+#contact {
   background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+#contact-form {
+  min-width: 500px;
   padding: 2.5rem;
   border-radius: 8px;
 }
 
-.form-label {
-  font-weight: 500;
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.form-control-custom {
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #e5e7eb;
@@ -259,7 +406,7 @@ body {
   font-family: inherit;
 }
 
-.form-control-custom:focus {
+.form-input:focus {
   outline: none;
   border-color: #4f46e5;
 }
@@ -269,6 +416,7 @@ body {
   border-radius: 5px;
   text-align: center;
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 .form-feedback.success-msg {
@@ -276,16 +424,55 @@ body {
   color: #065f46;
 }
 
-/* Footer styling colors */
-.site-footer {
+/* Footer styling */
+footer {
   background-color: #1f2937;
   color: #9ca3af;
+  padding: 2rem;
+  text-align: center;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* ==========================================
-   4. RESPONSIVE BREAKPOINT CUSTOMIZATIONS
+   4. MOBILE & RESPONSIVE BREAKPOINTS
    ========================================== */
+@media (max-width: 992px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
 @media (max-width: 768px) {
+  section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  #heroo {
+    flex-direction: column-reverse;
+  }
+  .about-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .about-skills {
+    min-width: 100%;
+  }
+  .project-card {
+    flex-direction: row;
+    min-width: 100%;
+  }
+  .project-card-img {
+    max-width: 40%;
+  }
+
+  .hero-img {
+    max-width: 250px;
+  }
+
+  /* Navigation burger transitions */
   .nav-toggle {
     display: block;
   }
@@ -313,7 +500,6 @@ body {
     text-align: center;
   }
 
-  /* Animated states for custom mobile button icon toggles */
   .nav-toggle.open .hamburger {
     background: transparent;
   }
@@ -324,5 +510,19 @@ body {
   .nav-toggle.open .hamburger::after {
     transform: rotate(-45deg);
     bottom: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .project-card {
+    flex-direction: column;
+  }
+  .project-card-img {
+    max-width: 100%;
+    max-height: 40%;
+  }
+  #contact-form {
+    min-width: 100%;
+    padding: 2rem 1rem;
   }
 }

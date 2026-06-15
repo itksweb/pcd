@@ -2,9 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 1. CHANGING TEXT
   // ==========================================
-
-  // Changing Job Titles
-
   const roles = [
     "Frontend Developer",
     "Web Developer",
@@ -14,16 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   let index = 0;
-
   const roleText = document.querySelector(".changing-text");
 
   setInterval(() => {
     index++;
-
     if (index >= roles.length) {
       index = 0;
     }
-
     roleText.textContent = roles[index];
   }, 2000);
 
@@ -51,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3. PROJECT FILTER UTILITY
   // ==========================================
   const filterButtons = document.querySelectorAll(".filter-btn");
-  const projectWrappers = document.querySelectorAll(".project-card-wrapper");
+  const projectWrappers = document.querySelectorAll(".project-card");
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -64,20 +58,20 @@ document.addEventListener("DOMContentLoaded", () => {
       projectWrappers.forEach((wrapper) => {
         const cardCategory = wrapper.getAttribute("data-category");
 
-        // Toggle Bootstrap's 'd-none' class to filter elements
+        // Toggle our custom layout utility 'hidden' to filter elements
         if (filterValue === "all" || filterValue === cardCategory) {
-          wrapper.classList.remove("d-none");
+          wrapper.classList.remove("hidden");
         } else {
-          wrapper.classList.add("d-none");
+          wrapper.classList.add("hidden");
         }
       });
     });
   });
 
   // ==========================================
-  // 3. INTERACTIVE FORM HANDLER
+  // 4. INTERACTIVE FORM HANDLER
   // ==========================================
-  const contactForm = document.getElementById("contactForm");
+  const contactForm = document.getElementById("contact-form");
   const formFeedback = document.getElementById("formFeedback");
 
   contactForm.addEventListener("submit", (event) => {
@@ -88,15 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Dynamically insert confirmation data
     formFeedback.textContent = `Thank you, ${clientName}! Your message has been sent successfully.`;
 
-    // Use standard display utility behaviors
-    formFeedback.classList.remove("d-none");
+    // Use our custom utility behavior
+    formFeedback.classList.remove("hidden");
     formFeedback.classList.add("success-msg");
 
     contactForm.reset();
 
     // Clear notification message view safely after a delay
     setTimeout(() => {
-      formFeedback.classList.add("d-none");
+      formFeedback.classList.add("hidden");
       formFeedback.classList.remove("success-msg");
     }, 5000);
   });
